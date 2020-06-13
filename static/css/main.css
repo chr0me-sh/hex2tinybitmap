@@ -1,0 +1,47 @@
+h1 {
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+}
+
+label {
+    display: inline-block;
+    width: 160px;
+    text-align: Left;
+    padding-bottom: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
+ul {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    width: 300px;
+}
+
+li span {
+    float: right;
+}
+
+#main {
+    display: flex;
+    justify-content: left;
+    padding-top: 50px;
+}
+
+#form {
+    padding-right: 60px;
+}
+
+#img_container span p {
+    height: 237px;
+    line-height: 237px; 
+}
+
+
+

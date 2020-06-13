@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Data Rep. Gadgets</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@500&display=swap" rel="stylesheet"> 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type=text/javascript>
+        $(function() {
+            $('button#img').bind('click', function() {
+                $.getJSON('/gen', {
+                    h: $('input[name="hexstr"]').val(),
+                    fg: $('input[name="foreground"').val(),
+                    bg: $('input[name="background"').val(),
+                }, function(data) {
+                    $('#result').html('<img src="data:image/png;base64,' + data.result + '" />');
+                })
+                .fail(function() {
+                    $('#result').html('<p>Image generation failed. Make sure you have entered exactly 8 bytes!</p>');
+                });
+            return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Number Systems and Data Representation</h1>
+
+    <div id="description">
+        <p>On this page, you can test creating images from their hexadecimal representation, as seen in the slides.</p>
+        <p>Here are a few examples:
+            <ul>
+                <li>Duck:<span>18 34 3F 1C 1E 7E 7E 3C</span></li>
+                <li>Skeleton?:<span>FF FF BB EF FF 54 54 54</span></li>
+                <li>Frog-ish:<span>77 55 FF C0 FF FF FF DD</span></li>
+                <li>Ghost:<span>3E 49 49 6D 7F 61 7F 55</span></li>
+            </ul>
+        </p>
+    </div>
+
+    <div id="main">
+        <div id="form">
+            <h2>Generator:</h2>
+            <form>
+                <label for="hexstr">Hex String:</label>
+                <input type="text" size="21" name="hexstr"><br>
+
+                <label for="foreground">Foreground colour:</label>
+                <input type="color" name="foreground" value="#ffff00"><br>
+
+                <label for="background">Background colour:</label>
+                <input type="color" name="background" value="#000000"><br>
+
+                <button type="button" id="img">Generate Image</button>
+            </form>
+        </div>
+        <div id="img_container">
+            <span id="result"></span>
+        </div>
+    </div>
+
+</body>
+</html>
